@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  
+  <body>
+  This is debugs:
+  
+    {% for feed in feeds %}
+      <p> 
+      {{ feed.name }} :
+      {{ feed.type }} : 
+     
+      
+      {{ feed.link }} :
+      {{ feed.desc }} :
+      {{ feed.open }} :
+      {{ feed.close }} :
+      {{ feed.feed_url}} 
+     </p>
+    {% endfor %}
+  </body>
+</html>
+{% endautoescape %}
+
