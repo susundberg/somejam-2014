@@ -10,7 +10,7 @@
          kuvaus: "{{ feed.desc }}",
          {% if feed.open != None %} 
            opens: "{{ feed.open }}",
-           closes: "{{ feed.open }}",
+           closes: "{{ feed.close }}",
          {% endif %}   
       },   
       {% endif %}
@@ -25,7 +25,7 @@
          kuvaus: "{{ feed.desc }}",
          {% if feed.open != None %} 
            opens: "{{ feed.open }}",
-           closes: "{{ feed.open }}",
+           closes: "{{ feed.close }}",
          {% endif %}   
       },   
       {% endif %}
