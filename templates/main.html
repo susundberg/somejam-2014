@@ -1,24 +1,37 @@
-<!DOCTYPE html>
+
 {% autoescape true %}
-<html>
-  
-  <body>
-  This is debugs:
-  
+{
+  ryhmät : [
     {% for feed in feeds %}
-      <p> 
-      {{ feed.name }} :
-      {{ feed.type }} : 
-     
-      
-      {{ feed.link }} :
-      {{ feed.desc }} :
-      {{ feed.open }} :
-      {{ feed.close }} :
-      {{ feed.feedurl}} 
-     </p>
+      {% if feed.type == "group" %}
+      {
+         nimi: "{{ feed.name }}",
+         linkki: "{{ feed.link }}",
+         kuvaus: "{{ feed.desc }}",
+         {% if feed.open != None %} 
+           opens: "{{ feed.open }}",
+           closes: "{{ feed.open }}",
+         {% endif %}   
+      },   
+      {% endif %}
     {% endfor %}
-  </body>
-</html>
+    ],
+ kahdenkeskeiset : [
+    {% for feed in feeds %}
+      {% if feed.type != "group" %}
+      {
+         nimi: "{{ feed.name }}",
+         linkki: "{{ feed.link }}",
+         kuvaus: "{{ feed.desc }}",
+         {% if feed.open != None %} 
+           opens: "{{ feed.open }}",
+           closes: "{{ feed.open }}",
+         {% endif %}   
+      },   
+      {% endif %}
+    {% endfor %}
+    ],
+}
+
 {% endautoescape %}
 
