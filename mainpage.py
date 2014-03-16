@@ -25,7 +25,7 @@ def get_feeds():
       feeds_query = Database.Feeds.query()
       return feeds_query.fetch(99)
 
-class MainPage(webapp2.RequestHandler):
+class JsonPage(webapp2.RequestHandler):
     def get(self):
         template_values = { 'feeds' : get_feeds() }
         template = JINJA_ENVIRONMENT.get_template('templates/main.html')
@@ -47,7 +47,14 @@ def parse_time_string( str_year, str_month, str_day, str_time ):
    timeobj = datetime.time( int(time.strftime("%H", timeobj)), int(time.strftime("%M", timeobj)) )
    #print "CONVERTING: " + str(timestr) + " => " + str(timeobj)
    return (dateobj, timeobj)
-        
+
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        self.response.write(template.render( {} ))  
+         
+   
+   
 class UpdatePage(webapp2.RequestHandler):
     def get(self):
       feeds = get_feeds() 
@@ -122,6 +129,7 @@ class AdminPage(webapp2.RequestHandler):
         
 application = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/json', JsonPage),
     ('/admin', AdminPage),
     ('/update', UpdatePage),
     ], debug=True)

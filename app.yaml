@@ -12,6 +12,12 @@ libraries:
   version: latest
   
 handlers:
+
+- url: /css
+  static_dir: static/css/
+- url: /js
+  static_dir: static/js/
+- url: /img
+  static_dir: static/img/
 - url: /.*
   script: mainpage.application
-
